@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!-- Theses permissions are not required on Android 12 but I keep them, learn more here -> https://github.com/VincentMasselis/RxBluetoothKotlin/releases/tag/3.2.1 -->
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+  <!-- BLUETOOTH and BLUETOOTH_ADMIN are not required by the system starting API 31 -->
+  <uses-permission
+      android:name="android.permission.BLUETOOTH"
+      android:maxSdkVersion="30" />
+  <uses-permission
+      android:name="android.permission.BLUETOOTH_ADMIN"
+      android:maxSdkVersion="30" />
+  <!-- New Bluetooth permissions used by the API 31 -->
+  <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+  <uses-permission
+      android:name="android.permission.BLUETOOTH_SCAN"
+      android:usesPermissionFlags="neverForLocation"
+      tools:ignore="UnusedAttribute"
+      tools:targetApi="s" />
+
+  <application>
+    <provider
+        android:name=".internal.RxBluetoothKotlinContextSniffer"
+        android:authorities="${applicationId}.rxbluetoothkotlin-context-sniffer"
+        android:exported="false" />
+  </application>
+
+
+</manifest>
